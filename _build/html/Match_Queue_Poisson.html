@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Match Portion &#8212; IRisk Queue Project</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Match_Queue_Poisson';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fill Portion" href="Fill_Queue.html" />
+    <link rel="prev" title="Match Portion" href="Match_Queue.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">IRisk Queue Project</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to My Notebooks!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Match_Queue.html">Match Portion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Match Portion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fill_Queue.html">Fill Portion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fill_Queue_Poisson.html">Fill Portion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Comparisons.html">Comparisons between Methods</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/LucianJSlo/LucianJSlo.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/LucianJSlo/LucianJSlo.github.io/issues/new?title=Issue%20on%20page%20%2FMatch_Queue_Poisson.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Match_Queue_Poisson.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Match Portion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-matching-method">The Matching Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-function">Poisson Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#match-test-when-n-1000-poisson-by-party">Match test when N = 1000, Poisson by Party</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeated-n-1000-poisson-match-trials-by-party">Repeated N=1000 Poisson Match Trials by Party</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#match-test-when-n-1000-poisson-by-individual">Match Test when N = 1000 Poisson by Individual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeated-n-1000-poisson-match-trials-by-individual">Repeated N=1000 Poisson Match Trials by Individual</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1729</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="match-portion">
+<h1>Match Portion<a class="headerlink" href="#match-portion" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5 3 1 1 4 2 5 2 1 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Imagine this: you wrap up your last final exam for the semester and you’re ready to play the video game you’ve been wanting to play for a while. You sit down at your computer, start the game, join a lobby, and wait. And wait some more. You start getting frustrated. How long are you going to have to keep waiting? That’s what this researh hopes to address.</p>
+<p>For the purposes of this experience, we’ll assume that, to begin a game, a team must first have 5 players. Another assumption is that players will join with varying group sizes. For example, there may be solo players, duos with 2 players, or even a whole party of 5 ready to go. This means that when making our team of 5, it could consist of all solo players, a duo and a trio, a party of 4 and a solo player, etc. These varying party sizes will influence how we optomize pairing players to make a team of 5. The distribution of party sizes will be altered, as well as the frequency of the arrivals.</p>
+<section id="the-matching-method">
+<h2>The Matching Method<a class="headerlink" href="#the-matching-method" title="Link to this heading">#</a></h2>
+<p>In this approach, we will seek to match every incoming party with their complement. For example, 2’s are matched with 3’s, 4’s are matched with 1’s, and 5’s go right ahead. Here’s an example of how we would group 10 parties who join the Queue:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function for grouping parties of X with parties of 5-X</span>
+<span class="c1"># Returns a list of all average wait times and</span>
+<span class="c1"># a dataframe of all party size amounts that were left unmatched</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">CreatePartyMatch</span><span class="p">(</span><span class="n">arrivals</span><span class="p">,</span><span class="n">sizes</span><span class="p">):</span>
+    <span class="n">c_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">arrivals</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Arrival Time&#39;</span><span class="p">:</span> <span class="n">c_arr</span><span class="p">,</span> <span class="s1">&#39;Party Size&#39;</span><span class="p">:</span> <span class="n">sizes</span><span class="p">,</span> <span class="s1">&#39;Time Passed&#39;</span><span class="p">:</span><span class="n">arrivals</span><span class="p">})</span>
+
+    <span class="n">waits</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">parties</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">matches</span><span class="o">.</span><span class="n">append</span><span class="p">([])</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arrivals</span><span class="p">)):</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">party</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># if the party size is 5, add zero to average wait times</span>
+        <span class="k">if</span> <span class="n">party</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">waits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">weights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">parties</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+            <span class="k">continue</span>
+        
+        <span class="c1"># Party of X&#39;s party of (5-X):</span>
+        <span class="n">complement</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="mi">4</span> <span class="o">-</span> <span class="n">party</span><span class="p">]</span>
+
+        <span class="c1"># Party of X doesn&#39;t have a match, keep it waiting with other partys of X</span>
+        <span class="k">if</span> <span class="n">complement</span> <span class="o">==</span> <span class="p">[]:</span>
+            <span class="n">matches</span><span class="p">[</span><span class="n">party</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="c1"># Party of X found a party of (5-X), remove the first one waiting</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">complement</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">waits</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">time</span> <span class="o">-</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">weights</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">time</span> <span class="o">-</span> <span class="n">temp</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">parties</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">temp</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">val</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="n">leftovers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">:</span>
+        <span class="n">leftovers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+    <span class="n">dfl</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Party Size&#39;</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span><span class="s1">&#39;leftover amount&#39;</span><span class="p">:</span><span class="n">leftovers</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="n">waits</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">dfl</span><span class="p">,</span><span class="n">parties</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="poisson-function">
+<h3>Poisson Function<a class="headerlink" href="#poisson-function" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">PoissonClean</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">lamb</span><span class="p">):</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">lamb</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">arr</span>
+
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="match-test-when-n-1000-poisson-by-party">
+<h3>Match test when N = 1000, Poisson by Party<a class="headerlink" href="#match-test-when-n-1000-poisson-by-party" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">arrivals</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">PoissonClean</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+
+<span class="n">avg_waits</span><span class="p">,</span><span class="n">weight</span><span class="p">,</span><span class="n">dfl</span><span class="p">,</span><span class="n">parties</span> <span class="o">=</span> <span class="n">CreatePartyMatch</span><span class="p">(</span><span class="n">arrivals</span><span class="p">,</span><span class="n">sizes</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">avg_waits</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wq&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;[Match] Party Wait in Queue, Poisson&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">parties</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">avg_waits</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="n">party_sample_pois</span> <span class="o">=</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], 5, [np.float64(2.0), np.float64(3.0)], 5, [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], 5, [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)]]
+</pre></div>
+</div>
+<img alt="_images/b6f8301aabd2807fc1ddb37541c936f13b7cd07b38dabc58c16ea878772828dc.png" src="_images/b6f8301aabd2807fc1ddb37541c936f13b7cd07b38dabc58c16ea878772828dc.png" />
+</div>
+</div>
+</section>
+<section id="repeated-n-1000-poisson-match-trials-by-party">
+<h3>Repeated N=1000 Poisson Match Trials by Party<a class="headerlink" href="#repeated-n-1000-poisson-match-trials-by-party" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">means</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">medians</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">arrivals</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="n">PoissonClean</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+
+    <span class="n">avg_waits</span><span class="p">,</span><span class="n">weight</span><span class="p">,</span><span class="n">dfl</span><span class="p">,</span><span class="n">parties</span> <span class="o">=</span> <span class="n">CreatePartyMatch</span><span class="p">(</span><span class="n">arrivals</span><span class="p">,</span><span class="n">sizes</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">avg_waits</span><span class="p">)</span>
+    <span class="n">means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">medians</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="mi">5</span><span class="p">])</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">medians</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Average median&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Median wait times for N = 1000&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Average mean&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mean wait times for N = 1000&quot;</span><span class="p">)</span>
+
+<span class="n">party_means_pois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">means</span><span class="p">)</span>
+<span class="n">party_meds_pois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">medians</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ed723d87acd920fdca0ceac39c497e0e9a027e4a008c2aeee204997ae8737ec5.png" src="_images/ed723d87acd920fdca0ceac39c497e0e9a027e4a008c2aeee204997ae8737ec5.png" />
+<img alt="_images/910c27b1dd63091f3cd99e0d0b3eb842dd05a78563ee24c6b18fe2ff7a576428.png" src="_images/910c27b1dd63091f3cd99e0d0b3eb842dd05a78563ee24c6b18fe2ff7a576428.png" />
+</div>
+</div>
+</section>
+<section id="match-test-when-n-1000-poisson-by-individual">
+<h3>Match Test when N = 1000 Poisson by Individual<a class="headerlink" href="#match-test-when-n-1000-poisson-by-individual" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">arrivals</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">PoissonClean</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+
+<span class="n">avg_waits</span><span class="p">,</span><span class="n">weight</span><span class="p">,</span><span class="n">dfl</span><span class="p">,</span><span class="n">parties</span> <span class="o">=</span> <span class="n">CreatePartyMatch</span><span class="p">(</span><span class="n">arrivals</span><span class="p">,</span><span class="n">sizes</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">avg_waits</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wq&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;[Match] Individual Wait in Queue, Poisson&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">parties</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="n">ind_sample_pois</span> <span class="o">=</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[np.float64(2.0), np.float64(3.0)], [np.float64(3.0), np.float64(2.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], 5, [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], 5, [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(1.0), np.float64(4.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)], [np.float64(2.0), np.float64(3.0)]]
+</pre></div>
+</div>
+<img alt="_images/6d8fe361713191c78b61fea29179c6863b70cf23f9df0430d51eeba73026f27c.png" src="_images/6d8fe361713191c78b61fea29179c6863b70cf23f9df0430d51eeba73026f27c.png" />
+</div>
+</div>
+</section>
+<section id="repeated-n-1000-poisson-match-trials-by-individual">
+<h3>Repeated N=1000 Poisson Match Trials by Individual<a class="headerlink" href="#repeated-n-1000-poisson-match-trials-by-individual" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">means</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">medians</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">arrivals</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="n">PoissonClean</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+
+    <span class="n">avg_waits</span><span class="p">,</span><span class="n">weight</span><span class="p">,</span><span class="n">dfl</span><span class="p">,</span><span class="n">parties</span> <span class="o">=</span> <span class="n">CreatePartyMatch</span><span class="p">(</span><span class="n">arrivals</span><span class="p">,</span><span class="n">sizes</span><span class="p">)</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">medians</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">describe</span><span class="p">()[</span><span class="mi">5</span><span class="p">])</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">medians</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Average median&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Median wait times for N = 1000&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Average mean&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mean wait times for N = 1000&quot;</span><span class="p">)</span>
+
+<span class="n">ind_means_pois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">means</span><span class="p">)</span>
+<span class="n">ind_meds_pois</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">medians</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bdf616648b5acca2cc23574825e51dc8e0d2c621cee5b3074984c9206485bac9.png" src="_images/bdf616648b5acca2cc23574825e51dc8e0d2c621cee5b3074984c9206485bac9.png" />
+<img alt="_images/76f2acb49cfd1400b8087e03f33c012580d38b0ee2352ec176977ec495be625b.png" src="_images/76f2acb49cfd1400b8087e03f33c012580d38b0ee2352ec176977ec495be625b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">party_sample_pois</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average party mean across 100 trials:&quot;</span><span class="p">,</span><span class="n">party_means_pois</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average party median across 100 trials:&quot;</span><span class="p">,</span><span class="n">party_meds_pois</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind_sample_pois</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average individual mean across 100 trials:&quot;</span><span class="p">,</span><span class="n">ind_means_pois</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average individual median across 100 trials:&quot;</span><span class="p">,</span><span class="n">ind_meds_pois</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    81.000000
+mean      6.215553
+std       7.549601
+min       0.000000
+25%       1.357684
+50%       3.045203
+75%       6.801828
+max      29.176442
+dtype: float64
+
+Average party mean across 100 trials: 7.966974791589712
+Average party median across 100 trials: 3.6264577617453218
+
+count    84.000000
+mean      4.867682
+std       7.447888
+min       0.000000
+25%       0.769466
+50%       2.146565
+75%       5.903716
+max      45.753743
+dtype: float64
+
+Average individual mean across 100 trials: 6.348460121340402
+Average individual median across 100 trials: 2.7209202598431217
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testing</span>
+
+<span class="n">arrivals</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="n">PoissonClean</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">avg_waits</span><span class="p">,</span><span class="n">weight</span><span class="p">,</span><span class="n">dfl</span><span class="p">,</span><span class="n">parties</span> <span class="o">=</span> <span class="n">CreatePartyMatch</span><span class="p">(</span><span class="n">arrivals</span><span class="p">,</span><span class="n">sizes</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;:&quot;</span><span class="p">,</span><span class="n">dfl</span><span class="p">[</span><span class="s1">&#39;leftover amount&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 : 716
+2 : 117
+3 : 0
+4 : 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Match_Queue.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Match Portion</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Fill_Queue.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fill Portion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-matching-method">The Matching Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-function">Poisson Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#match-test-when-n-1000-poisson-by-party">Match test when N = 1000, Poisson by Party</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeated-n-1000-poisson-match-trials-by-party">Repeated N=1000 Poisson Match Trials by Party</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#match-test-when-n-1000-poisson-by-individual">Match Test when N = 1000 Poisson by Individual</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeated-n-1000-poisson-match-trials-by-individual">Repeated N=1000 Poisson Match Trials by Individual</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Lucian
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
