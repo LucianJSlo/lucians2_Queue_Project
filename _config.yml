@@ -10,6 +10,7 @@ execute:
 html:
   use_repository_button: true
   use_issues_button: true
+  baseurl: /lucians2_Queue_Project
 
 repository:
-  url: https://github.com/LucianJSlo/LucianJSlo.github.io
+  url: https://github.com/LucianJSlo/lucians2_Queue_Project
