@@ -1,0 +1,9 @@
+---
+format: jb-book
+root: intro
+chapters:
+  - file: Match_Queue
+  - file: Match_Queue_Poisson
+  - file: Fill_Queue
+  - file: Fill_Queue_Poisson
+  - file: Comparisons

@@ -1,0 +1,15 @@
+---
+title: IRisk Queue Project
+author: Lucian
+
+# Execution settings (whether to run notebooks when building)
+execute:
+  execute_notebooks: off  # 'off', 'auto', or 'force'
+
+# HTML settings
+html:
+  use_repository_button: true
+  use_issues_button: true
+
+repository:
+  url: https://github.com/LucianJSlo/LucianJSlo.github.io
