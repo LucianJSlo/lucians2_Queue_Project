@@ -1,9 +1,11 @@
 ---
 format: jb-book
-root: intro
+root: Introduction
 chapters:
+  - file: Project
   - file: Match_Queue
   - file: Match_Queue_Poisson
   - file: Fill_Queue
   - file: Fill_Queue_Poisson
   - file: Comparisons
+  - file: Future

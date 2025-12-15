@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Comparisons between Methods &#8212; IRisk Queue Project</title>
+    <title>Future Work &#8212; IRisk Queue Project</title>
   
   
   
@@ -57,12 +57,13 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Comparisons';</script>
-    <link rel="canonical" href="/lucians2_Queue_Project/Comparisons.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Future';</script>
+    <link rel="canonical" href="/lucians2_Queue_Project/Future.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Future Work" href="Future.html" />
-    <link rel="prev" title="Fill Queue (Poisson)" href="Fill_Queue_Poisson.html" />
+    <link rel="prev" title="Comparisons between Methods" href="Comparisons.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -180,8 +181,8 @@
 <li class="toctree-l1"><a class="reference internal" href="Match_Queue_Poisson.html">Match Queue (Poisson)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Fill_Queue.html">Fill Queue (Uniform)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Fill_Queue_Poisson.html">Fill Queue (Poisson)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparisons between Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Future.html">Future Work</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Comparisons.html">Comparisons between Methods</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Future Work</a></li>
 </ul>
 
     </div>
@@ -253,7 +254,7 @@
       
       
       
-      <li><a href="https://github.com/LucianJSlo/lucians2_Queue_Project/issues/new?title=Issue%20on%20page%20%2FComparisons.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LucianJSlo/lucians2_Queue_Project/issues/new?title=Issue%20on%20page%20%2FFuture.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -283,7 +284,7 @@
       
       
       
-      <li><a href="_sources/Comparisons.ipynb" target="_blank"
+      <li><a href="_sources/Future.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -354,9 +355,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -367,23 +366,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Comparisons between Methods</h1>
+    <h1>Future Work</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-vs-party">Individual vs. Party</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-vs-median">Mean vs. Median</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-vs-poisson">Uniform vs. Poisson</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#players-unpaired">Players Unpaired</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-verdict">The Verdict:</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -393,50 +380,43 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="comparisons-between-methods">
-<h1>Comparisons between Methods<a class="headerlink" href="#comparisons-between-methods" title="Link to this heading">#</a></h1>
-<p>We did a lot of comparisons when it came to this topic. Not only did we compare “Match” Queues and “Fill” Queues, but we also compared their performance on a uniform/poisson distribution, we calculated wait times by party/individual, we compared each queue’s mean/median wait time, and we saw how many people in our queue were processed. With all this information, let’s pit the two against each other and find out who comes out on top</p>
-<section id="individual-vs-party">
-<h2>Individual vs. Party<a class="headerlink" href="#individual-vs-party" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>Match Queues</strong> generally have a <strong>Lower Individual</strong> Wait Time. This means if you asked every player how long they wait to start a game, they will respond with a lower time than if you saw how long a team got processed.</p></li>
-<li><p><strong>Fill Queues</strong> had a <strong>Higher Individual Uniform</strong> Wait Time, where as the wait time for <strong>Poisson was Equal</strong>. This implies that if you ask each player how long they wait to start a game, more people will say they waited longer than if you saw which teams got processed. This implies that large teams are taking longer to get processed.</p></li>
-</ul>
-</section>
-<section id="mean-vs-median">
-<h2>Mean vs. Median<a class="headerlink" href="#mean-vs-median" title="Link to this heading">#</a></h2>
-<p><strong>All Trials had a Smaller Median than Mean</strong> !!</p>
-<p>The medians (from smallest to largest) are as follows:</p>
-<ul class="simple">
-<li><p><strong>Match Uniform</strong>, <strong>Match Poisson</strong>, <strong>Fill Poisson</strong>, <strong>Fill Uniform</strong></p></li>
-</ul>
-<p>The means (from smallest to largest) are as follows:</p>
-<ul class="simple">
-<li><p><strong>Fill Poisson</strong>, <strong>Match Poisson</strong>, <strong>Match Uniform</strong>, <strong>Fill Uniform</strong></p></li>
-</ul>
-<p>It’s important to note that although Match Unifrom had the lowest median wait time (~2), its mean wait time was nearly 10 times that (~20). Fill Poisson on the other hand, has a nearly equal median and mean.</p>
-<p>This shows that when players join the queue with a party size of a poisson distribution, the Fill Queue becomes the most consistent way of grouping players.</p>
-<p>Match queues, on the other hand, are the fastest when under a uniform party spread, but about 25% of players will have to wait more than 5 times that, up to almost 250 times</p>
-</section>
-<section id="uniform-vs-poisson">
-<h2>Uniform vs. Poisson<a class="headerlink" href="#uniform-vs-poisson" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Under <strong>Uniform Conditions</strong>, A <strong>Match Queue</strong>, for most people, will generally be <strong>much faster</strong> than a <strong>Fill Queue</strong>; However, <strong>Match Queues</strong> are also <strong>Right Skewed</strong> so they will generally have a <strong>Higher Standard Deviation</strong> than <strong>Fill Queues</strong></p></li>
-<li><p>Under <strong>Poisson Conditions</strong> A <strong>Fill Queue</strong> consistently <strong>perfroms better</strong> than a <strong>Match Queue</strong>. Even though a <strong>Match Queue</strong> may have the faster average median, it leaves <strong>a lot of players unpaired!!</strong></p></li>
-</ul>
-</section>
-<section id="players-unpaired">
-<h2>Players Unpaired<a class="headerlink" href="#players-unpaired" title="Link to this heading">#</a></h2>
-<p>The average players left over (from smallest to largest) is as follows:</p>
-<ul class="simple">
-<li><p><strong>Fill Poisson</strong>, <strong>Match Uniform</strong>, <strong>Fill Uniform</strong>, <strong>Match Poisson</strong></p></li>
-</ul>
-</section>
-<section id="the-verdict">
-<h2>The Verdict:<a class="headerlink" href="#the-verdict" title="Link to this heading">#</a></h2>
-<p>Our two standout performances were Match Queues on Unifrom with it’s lighting quick matching and Fill Queues on Poisson with stable consistency. All that’s left is to determine which distribution matches the real world: do most people play by themselves, with a few dedicated duos/trios? Or is the player party size pool more equally spread out? Spoiler alert, most people play by themselves, especially since it could be more difficult getting a friend or 2 or 3 to play with you at the same time as well.</p>
-<p>Knowing this, the <strong>Most Efficient Queue</strong> to implement in terms of <strong>player pairing and pairing speed</strong> would be… <strong>The Fill Queue!!</strong></p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="future-work">
+<h1>Future Work<a class="headerlink" href="#future-work" title="Link to this heading">#</a></h1>
+<p>There is a lot more work that can be done with these queues, one would be to find a closed form equation for wait and sojurn time in each queue. Take an example of a simple queue below:</p>
+<p>This queue takes single individuals that arrive in a uniform rate, 0-5, and groups them up into teams of 5. Can we estimate the mean wait time in this queue? We know that when the 5th person joins the queue, the other 4 waiting are finally processed, and the 5th person waits no more time. How long does the first person wait? The second? Thrid? Fourth? Working backwards, the 4th person is expected to wait 2.5 seconds until the 5th person arrives, since <span class="math notranslate nohighlight">\(E[U] = (b-a)/2\)</span>. The third person expects to wait 5 seconds, the second, 7.5, and the first, 10. If we add these values up and divide by 5, we get 5. Lets see if Monte Carlo Simulations agree with us.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">1337</span><span class="p">)</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">arrivals</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="n">c_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">arrivals</span><span class="p">)</span>
+
+<span class="n">big_mean</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+  <span class="n">small_mean</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">c_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">c_arr</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">j</span><span class="p">]</span>
+    <span class="n">small_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+  <span class="n">big_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">small_mean</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">small_mean</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected average wait time:&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">big_mean</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">big_mean</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Expected average wait time: 5.0242432372036285
+</pre></div>
+</div>
+</div>
+</div>
+<p>As shown in the code above, a Monte Carlo Simulation was able to match what we calculated as a mean wait time. The next steps would be to try to apply this to some of our other queues. The easiest to do this with, in my opinion, would be with match queues. We know that for each party waiting in the queue, there exists a complement out there that will process them immediately once they arrive. For uniform distributions, it would be easy to work out the expected value between a party arriving and its complement but I unfortunalty didn’t get around to finding that out for myself.</p>
+<p>This concludes my research project, I hope you had a good time reading along everything and hopefully next time you play an online video game, you appreciate the math that went into making your wait time as short as it was!</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -470,22 +450,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Fill_Queue_Poisson.html"
+       href="Comparisons.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Fill Queue (Poisson)</p>
+        <p class="prev-next-title">Comparisons between Methods</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="Future.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Future Work</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -493,25 +464,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-vs-party">Individual vs. Party</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-vs-median">Mean vs. Median</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-vs-poisson">Uniform vs. Poisson</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#players-unpaired">Players Unpaired</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-verdict">The Verdict:</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

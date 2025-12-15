@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Comparisons between Methods &#8212; IRisk Queue Project</title>
+    <title>Monte Carlo and Matchmaking &#8212; IRisk Queue Project</title>
   
   
   
@@ -57,12 +57,14 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Comparisons';</script>
-    <link rel="canonical" href="/lucians2_Queue_Project/Comparisons.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Project';</script>
+    <link rel="canonical" href="/lucians2_Queue_Project/Project.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Future Work" href="Future.html" />
-    <link rel="prev" title="Fill Queue (Poisson)" href="Fill_Queue_Poisson.html" />
+    <link rel="next" title="Match Queue (Uniform)" href="Match_Queue.html" />
+    <link rel="prev" title="Background" href="Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,12 +177,12 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Project.html">Monte Carlo and Matchmaking</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Monte Carlo and Matchmaking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Match_Queue.html">Match Queue (Uniform)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Match_Queue_Poisson.html">Match Queue (Poisson)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Fill_Queue.html">Fill Queue (Uniform)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Fill_Queue_Poisson.html">Fill Queue (Poisson)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparisons between Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Comparisons.html">Comparisons between Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Future.html">Future Work</a></li>
 </ul>
 
@@ -253,7 +255,7 @@
       
       
       
-      <li><a href="https://github.com/LucianJSlo/lucians2_Queue_Project/issues/new?title=Issue%20on%20page%20%2FComparisons.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/LucianJSlo/lucians2_Queue_Project/issues/new?title=Issue%20on%20page%20%2FProject.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -283,7 +285,7 @@
       
       
       
-      <li><a href="_sources/Comparisons.ipynb" target="_blank"
+      <li><a href="_sources/Project.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -367,7 +369,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Comparisons between Methods</h1>
+    <h1>Monte Carlo and Matchmaking</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -377,11 +379,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-vs-party">Individual vs. Party</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-vs-median">Mean vs. Median</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-vs-poisson">Uniform vs. Poisson</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#players-unpaired">Players Unpaired</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-verdict">The Verdict:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-and-inputs">Setup and Inputs:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-party-distribution">Uniform Party Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudo-poisson-party-distribution">Pseudo Poisson Party Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-queues">The Queues:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-process">The Process:</a></li>
 </ul>
             </nav>
         </div>
@@ -393,49 +398,63 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="comparisons-between-methods">
-<h1>Comparisons between Methods<a class="headerlink" href="#comparisons-between-methods" title="Link to this heading">#</a></h1>
-<p>We did a lot of comparisons when it came to this topic. Not only did we compare “Match” Queues and “Fill” Queues, but we also compared their performance on a uniform/poisson distribution, we calculated wait times by party/individual, we compared each queue’s mean/median wait time, and we saw how many people in our queue were processed. With all this information, let’s pit the two against each other and find out who comes out on top</p>
-<section id="individual-vs-party">
-<h2>Individual vs. Party<a class="headerlink" href="#individual-vs-party" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="monte-carlo-and-matchmaking">
+<h1>Monte Carlo and Matchmaking<a class="headerlink" href="#monte-carlo-and-matchmaking" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction:<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Imagine this: you wrap up your last final exam for the semester and you’re ready to play the video game you’ve been wanting to play for a while. You sit down at your computer, start the game, join a lobby, and… wait. And then wait some more. At this point, you start getting frustrated; how long are you going to have to keep waiting for this game to start? That’s what this research project hopes to answer!</p>
+<p>Each day, millions of people across the globe boot up their computers or consoles and turn on their favorite team based strategy games, whether that be Counter Strike, League of Legends, or Marvel Rivals. With that amount of players each day, it’s important for video game developers to streamline the matchmaking process so that pleyers spend less time waiting around, and more time enjoying the action. In addition to lowering wait times, developers have to find the most optimal way to group players so that everyone gets a chance to play.</p>
+<p>In experiment, we look at 2 different types of matchmaking algorithms, and see how well they perform when given 2 different ways players and their groups can enter the queue</p>
+</section>
+<section id="setup-and-inputs">
+<h2>Setup and Inputs:<a class="headerlink" href="#setup-and-inputs" title="Link to this heading">#</a></h2>
+<p>For the purposes of this experiment, we will assume that a game needs five Players to make a Team.</p>
+<p>Players will enter the queue in Parties of 1 all the way to 5, and Parties will enter the queue at a Uniform rate from 0 to 5, meaning after 1 party enters the queue, the next party will arive between 0 and 5 seconds.</p>
 <ul class="simple">
-<li><p><strong>Match Queues</strong> generally have a <strong>Lower Individual</strong> Wait Time. This means if you asked every player how long they wait to start a game, they will respond with a lower time than if you saw how long a team got processed.</p></li>
-<li><p><strong>Fill Queues</strong> had a <strong>Higher Individual Uniform</strong> Wait Time, where as the wait time for <strong>Poisson was Equal</strong>. This implies that if you ask each player how long they wait to start a game, more people will say they waited longer than if you saw which teams got processed. This implies that large teams are taking longer to get processed.</p></li>
+<li><p>A “Party” will hereunto be defined as any group of players joining the queue as one. They will be what the queue is processing and they can have a size ranging from 1 to 5.</p></li>
+<li><p>A “Player” will hereunto be defined as any individual within the Party or the Team. They are the ones that are doing the waiting, so a Party containing 4 Players waiting to be queued has 4 Players waiting around</p></li>
+<li><p>A “Team” will hereunto be defined as a group of any 5 Players that have been paired up and are ready to face other teams of 5</p></li>
+<li><p>“Pairing” will hereunto be defined as combining Partys with the sole purpose of creating a Team. Pairing can result in groups as little as 2 or a maximum of 5, which then become a team.</p></li>
+<li><p>A “Group” is a general term used to describe any number of Players and can be made up of multiple Parties or just a single Party.</p></li>
+</ul>
+<p>As mentioned above, the Queues will take in a list of Parties, and there are 2 Distributions from which these parties are selected, and will hereunto be refered to as “Party Distributions”</p>
+<section id="uniform-party-distribution">
+<h3>Uniform Party Distribution<a class="headerlink" href="#uniform-party-distribution" title="Link to this heading">#</a></h3>
+<p>A list of parties generated from a Uniform Party Distribution will contain values (<span class="math notranslate nohighlight">\(X\)</span>) ranging from 1 to 5, and each value (party size) has an equal chance of being chosen. The probabilities are as follows:</p>
+<p><span class="math notranslate nohighlight">\(P[X=1] = 1/5\)</span></p>
+<p><span class="math notranslate nohighlight">\(P[X=2] = 1/5\)</span></p>
+<p><span class="math notranslate nohighlight">\(P[X=3] = 1/5\)</span></p>
+<p><span class="math notranslate nohighlight">\(P[X=4] = 1/5\)</span></p>
+<p><span class="math notranslate nohighlight">\(P[X=5] = 1/5\)</span></p>
+</section>
+<section id="pseudo-poisson-party-distribution">
+<h3>Pseudo Poisson Party Distribution<a class="headerlink" href="#pseudo-poisson-party-distribution" title="Link to this heading">#</a></h3>
+<p>A list of parties generated from a Pseudo Poisson Party Distribution will contain values (<span class="math notranslate nohighlight">\(X\)</span>) ranging from 1 to 5. Each value (party size) has a different probability of being chosen. Their probabilities will first be determined by a Poisson Distribution where, for the purposes of this experiment, <span class="math notranslate nohighlight">\(\lambda = 1\)</span>. After that, the probabilities are altered as follows: Any <span class="math notranslate nohighlight">\(0\)</span> generated by the Poisson Distribution will instead be marked as a 1. Finally, any value greater than 5 will then be rerolled using a uniform distribution <span class="math notranslate nohighlight">\(U\)</span> where each value (1-5) has an equal chance to be chosen. The probabilities are as follows:</p>
+<p><span class="math notranslate nohighlight">\(P[X=1] = P[X_{\lambda} = 0] + P[X_{\lambda} = 1] + P[X_{\lambda} &gt; 5]*P[X_U = 1] = .7359\)</span></p>
+<p><span class="math notranslate nohighlight">\(P[X=2] = P[X_{\lambda} = 2] + P[X_{\lambda} &gt; 5]*P[X_U = 2] = .1841\)</span></p>
+<p><span class="math notranslate nohighlight">\(P[X=3] = P[X_{\lambda} = 3] + P[X_{\lambda} &gt; 5]*P[X_U = 3] = .0614\)</span></p>
+<p><span class="math notranslate nohighlight">\(P[X=4] = P[X_{\lambda} = 4] + P[X_{\lambda} &gt; 5]*P[X_U = 4] = .0154\)</span></p>
+<p><span class="math notranslate nohighlight">\(P[X=5] = P[X_{\lambda} = 5] + P[X_{\lambda} &gt; 5]*P[X_U = 5] = .0032\)</span></p>
+</section>
+</section>
+<section id="the-queues">
+<h2>The Queues:<a class="headerlink" href="#the-queues" title="Link to this heading">#</a></h2>
+<p>The two Queues we will be using for this experiment are <strong>Match</strong> Queues and <strong>Fill</strong> Queues. Both Queues will take in a list of <span class="math notranslate nohighlight">\(N\)</span> Parties and Inter-Arrival times, and both will attempt to pair up Parties and create Teams. The number of teams created, <span class="math notranslate nohighlight">\(T\)</span>, will be less than <span class="math notranslate nohighlight">\(N\)</span>, and each queue will output a 2 lists of size <span class="math notranslate nohighlight">\(T\)</span>, one which contains the <strong>Average</strong> wait time each <strong>Party</strong> faced and another which contains the <strong>Average</strong> wait time each <strong>Individual</strong> Faced. Additionally, each queue will output a list of size <span class="math notranslate nohighlight">\(T\)</span> that contains every successful team created, along with their Party makeup. The Queues work as follows:</p>
+<ul class="simple">
+<li><p><strong>Match Queue</strong>: Attempts to pair each Party input with its complement (3 with 2, 4 with 1). <strong>Additional Output:</strong> A dataframe listing the amount of each group left in the queue that wasn’t paired up with their complementary party.</p></li>
+<li><p><strong>Fill Queue</strong> Attempts to fill in groups as players enter the queue (if party of 4 enters queue and there is a party of 3 and 1 in one group, the fill queue will create a new group with the party of 4). <strong>Additional Output:</strong> A list of every Group remaining that didn’t become a Team</p></li>
 </ul>
 </section>
-<section id="mean-vs-median">
-<h2>Mean vs. Median<a class="headerlink" href="#mean-vs-median" title="Link to this heading">#</a></h2>
-<p><strong>All Trials had a Smaller Median than Mean</strong> !!</p>
-<p>The medians (from smallest to largest) are as follows:</p>
+<section id="the-process">
+<h2>The Process:<a class="headerlink" href="#the-process" title="Link to this heading">#</a></h2>
+<p>For each Queue and Party Distribution Combination, we:</p>
 <ul class="simple">
-<li><p><strong>Match Uniform</strong>, <strong>Match Poisson</strong>, <strong>Fill Poisson</strong>, <strong>Fill Uniform</strong></p></li>
+<li><p>First generate a Party List and Inter-Arrival list of size <span class="math notranslate nohighlight">\(N\)</span>, 1000 in this case.</p></li>
+<li><p>Next, we study the output of average individual wait times the Queue generated, and take note of this sample’s mean and median.</p></li>
+<li><p>After that, we repeat the process 100 more times, each time taking note of the individual median and mean average wait time.</p></li>
+<li><p>Finally, we have enough information present to judge the average estimated Mean and Median Average wait time in each Queue, all thanks to Monte Carlo Simulation</p></li>
 </ul>
-<p>The means (from smallest to largest) are as follows:</p>
-<ul class="simple">
-<li><p><strong>Fill Poisson</strong>, <strong>Match Poisson</strong>, <strong>Match Uniform</strong>, <strong>Fill Uniform</strong></p></li>
-</ul>
-<p>It’s important to note that although Match Unifrom had the lowest median wait time (~2), its mean wait time was nearly 10 times that (~20). Fill Poisson on the other hand, has a nearly equal median and mean.</p>
-<p>This shows that when players join the queue with a party size of a poisson distribution, the Fill Queue becomes the most consistent way of grouping players.</p>
-<p>Match queues, on the other hand, are the fastest when under a uniform party spread, but about 25% of players will have to wait more than 5 times that, up to almost 250 times</p>
-</section>
-<section id="uniform-vs-poisson">
-<h2>Uniform vs. Poisson<a class="headerlink" href="#uniform-vs-poisson" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Under <strong>Uniform Conditions</strong>, A <strong>Match Queue</strong>, for most people, will generally be <strong>much faster</strong> than a <strong>Fill Queue</strong>; However, <strong>Match Queues</strong> are also <strong>Right Skewed</strong> so they will generally have a <strong>Higher Standard Deviation</strong> than <strong>Fill Queues</strong></p></li>
-<li><p>Under <strong>Poisson Conditions</strong> A <strong>Fill Queue</strong> consistently <strong>perfroms better</strong> than a <strong>Match Queue</strong>. Even though a <strong>Match Queue</strong> may have the faster average median, it leaves <strong>a lot of players unpaired!!</strong></p></li>
-</ul>
-</section>
-<section id="players-unpaired">
-<h2>Players Unpaired<a class="headerlink" href="#players-unpaired" title="Link to this heading">#</a></h2>
-<p>The average players left over (from smallest to largest) is as follows:</p>
-<ul class="simple">
-<li><p><strong>Fill Poisson</strong>, <strong>Match Uniform</strong>, <strong>Fill Uniform</strong>, <strong>Match Poisson</strong></p></li>
-</ul>
-</section>
-<section id="the-verdict">
-<h2>The Verdict:<a class="headerlink" href="#the-verdict" title="Link to this heading">#</a></h2>
-<p>Our two standout performances were Match Queues on Unifrom with it’s lighting quick matching and Fill Queues on Poisson with stable consistency. All that’s left is to determine which distribution matches the real world: do most people play by themselves, with a few dedicated duos/trios? Or is the player party size pool more equally spread out? Spoiler alert, most people play by themselves, especially since it could be more difficult getting a friend or 2 or 3 to play with you at the same time as well.</p>
-<p>Knowing this, the <strong>Most Efficient Queue</strong> to implement in terms of <strong>player pairing and pairing speed</strong> would be… <strong>The Fill Queue!!</strong></p>
+<p>The next few pages contain the code and the process for each combination of queue and party distribution. Feel free to look over the code and output, and once your done, head to the “Comparisons between Methods” Tab for the conclusions.</p>
 </section>
 </section>
 
@@ -470,20 +489,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Fill_Queue_Poisson.html"
+       href="Introduction.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Fill Queue (Poisson)</p>
+        <p class="prev-next-title">Background</p>
       </div>
     </a>
     <a class="right-next"
-       href="Future.html"
+       href="Match_Queue.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Future Work</p>
+        <p class="prev-next-title">Match Queue (Uniform)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -503,11 +522,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-vs-party">Individual vs. Party</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-vs-median">Mean vs. Median</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-vs-poisson">Uniform vs. Poisson</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#players-unpaired">Players Unpaired</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-verdict">The Verdict:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-and-inputs">Setup and Inputs:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-party-distribution">Uniform Party Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudo-poisson-party-distribution">Pseudo Poisson Party Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-queues">The Queues:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-process">The Process:</a></li>
 </ul>
   </nav></div>
 
