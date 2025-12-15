@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Fill Portion &#8212; IRisk Queue Project</title>
+    <title>Fill Queue (Poisson) &#8212; IRisk Queue Project</title>
   
   
   
@@ -62,7 +62,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Comparisons between Methods" href="Comparisons.html" />
-    <link rel="prev" title="Fill Portion" href="Fill_Queue.html" />
+    <link rel="prev" title="Fill Queue (Uniform)" href="Fill_Queue.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -143,7 +143,7 @@
     
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="Introduction.html">
   
   
   
@@ -169,17 +169,19 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Welcome to My Notebooks!
+                <a class="reference internal" href="Introduction.html">
+                    Background
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Match_Queue.html">Match Portion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Match_Queue_Poisson.html">Match Portion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Fill_Queue.html">Fill Portion</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fill Portion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Project.html">Monte Carlo and Matchmaking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Match_Queue.html">Match Queue (Uniform)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Match_Queue_Poisson.html">Match Queue (Poisson)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fill_Queue.html">Fill Queue (Uniform)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Fill Queue (Poisson)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Comparisons.html">Comparisons between Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Future.html">Future Work</a></li>
 </ul>
 
     </div>
@@ -365,7 +367,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Fill Portion</h1>
+    <h1>Fill Queue (Poisson)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,10 +411,8 @@ document.write(`
 </div>
 </div>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="fill-portion">
-<h1>Fill Portion<a class="headerlink" href="#fill-portion" title="Link to this heading">#</a></h1>
-<p>Imagine this: you wrap up your last final exam for the semester and you’re ready to play the video game you’ve been wanting to play for a while. You sit down at your computer, start the game, join a lobby, and wait. And wait some more. You start getting frustrated. How long are you going to have to keep waiting? That’s what this researh hopes to address.</p>
-<p>For the purposes of this experience, we’ll assume that, to begin a game, a team must first have 5 players. Another assumption is that players will join with varying group sizes. For example, there may be solo players, duos with 2 players, or even a whole party of 5 ready to go. This means that when making our team of 5, it could consist of all solo players, a duo and a trio, a party of 4 and a solo player, etc. These varying party sizes will influence how we optomize pairing players to make a team of 5. The distribution of party sizes will be altered, as well as the frequency of the arrivals.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="fill-queue-poisson">
+<h1>Fill Queue (Poisson)<a class="headerlink" href="#fill-queue-poisson" title="Link to this heading">#</a></h1>
 <section id="the-filling-method">
 <h2>The Filling Method<a class="headerlink" href="#the-filling-method" title="Link to this heading">#</a></h2>
 <p>In this approach, we will seek fill every team as the parties arrive</p>
@@ -776,7 +776,7 @@ Average individual median across 100 trials: 4.494520780992251
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Fill Portion</p>
+        <p class="prev-next-title">Fill Queue (Uniform)</p>
       </div>
     </a>
     <a class="right-next"
